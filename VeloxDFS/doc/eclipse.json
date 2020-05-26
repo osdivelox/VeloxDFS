@@ -1,0 +1,89 @@
+{
+    "log": {
+        "type": "LOG_LOCAL6", 
+        "mask": "debug", 
+        "name": "ECLIPSE"
+    }, 
+    "launcher": {
+        "DFS": "eclipse_node", 
+        "MR": "eclipse_node_mr"
+    }, 
+    "cache": {
+        "numbin": 100, 
+        "concurrency": 1, 
+        "size": 200000
+    }, 
+    "mapreduce": {
+        "mappers": 4, 
+        "write_buf_size": 5120000, 
+        "reduce_slot": 4, 
+        "iblock_size": 134217000
+    }, 
+    "network": {
+        "serialization": "binary", 
+        "nodes": [
+            "172.20.1.40", 
+            "172.20.1.41", 
+            "172.20.1.42", 
+            "172.20.1.43", 
+            "172.20.1.44", 
+            "172.20.1.45", 
+            "172.20.1.46", 
+            "172.20.1.47", 
+            "172.20.1.48", 
+            "172.20.1.49", 
+            "172.20.1.50", 
+            "172.20.1.51", 
+            "172.20.1.52", 
+            "172.20.1.53", 
+            "172.20.1.54", 
+            "172.20.1.55", 
+            "172.20.1.56", 
+            "172.20.1.57", 
+            "172.20.1.58", 
+            "172.20.1.59"
+        ], 
+        "iface": "ens1f0", 
+        "ports": {
+            "internal": 8754, 
+            "mapreduce": 8766, 
+            "client": 8755
+        }
+    }, 
+    "filesystem": {
+        "buffer": 512, 
+        "equal_sized_blocks": "false", 
+        "replica": 3, 
+        "block64m": 67108864, 
+        "block": 8388608
+    }, 
+    "max_job": 1024, 
+    "path": {
+        "idata": "/scratch/velox/idata", 
+        "scratch": "/nvmeof_mnt/velox/velox/storage", 
+        "applications": "/scratch/velox/apps", 
+        "metadata": "/nvmeof_mnt/velox/velox/"
+    }, 
+    "addons": {
+        "job_policy": "steal", 
+        "zk": {
+            "addr": "172.20.1.80", 
+            "enabled": "true", 
+            "client_path": "/home/velox/opt/zookeeper-3.4.10/bin/zkCli.sh", 
+            "min_block_size": 2000, 
+            "cores": 16, 
+            "port": "2381"
+        }, 
+        "lean_input_split": 1.0, 
+        "disk_monitor_tick": 5, 
+        "disk_id": "sdb", 
+        "shm_buf_width": 16, 
+        "shm_buf_depth": 2,
+        "beta": "0.5", 
+        "block_scheduler": "scheduler_base", 
+        "cores": 16, 
+        "min_block_size": 16777216, 
+        "alpha": "0.5"
+    }, 
+    "name": "VeloxDFS cluster eclipseMR file"
+}
