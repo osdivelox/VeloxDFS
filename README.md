@@ -16,14 +16,14 @@ VELOX ECOSYSTEM
 
 Related projects
 
-| Project                               | Description                  |URL                          |
+| Project                               | Description                  
 | -- | -- | -- |
-| VeloxMR           |  experimental MapReduce engine based on VeloxDFS | https://github.com/DICL/VeloxMR |
-| eclipsed          | deployment/debugging helper script writen in RUBY| https://github.com/DICL/eclipsed|
-| velox-hadoop      | VeloxDFS JAVA library for Hadoop                 | https://github.com/DICL/velox-hadoop |
-| velox-deploy-ansible | ansible playbook to automatize velox/hadoop installation | https://github.com/DICL/velox-deploy-ansible |
-| hadoop-etc        | Hadoop configuration files to use VeloxDFS       | https://github.com/vicentebolea/hadoop-etc |
-| velox-report      | Project to benchmark and log VeloxDFS performance | https://github.com/vicentebolea/velox-report |
+| VeloxMR           |  experimental MapReduce engine based on VeloxDFS 
+| eclipsed          | deployment/debugging helper script writen in RUBY
+| velox-hadoop      | VeloxDFS JAVA library for Hadoop                 
+| velox-deploy-ansible | ansible playbook to automatize velox/hadoop installation 
+| hadoop-etc        | Hadoop configuration files to use VeloxDFS       
+| velox-report      | Project to benchmark and log VeloxDFS performance 
 
 USAGE
 =====
@@ -40,7 +40,7 @@ The C++ API can be found at `vdfs.hh` and `DFS.hh` files, as for the JAVA API, i
 COMPILING & INSTALLING
 ======================
 <!-- @cond Remove those links for Doxygen-->
-Further information can be found it in: [Installation](https://github.com/DICL/VeloxDFS/wiki/Installation)
+Further information can be found it in:
 <!-- @endcond -->
 
 Compiling requirements
@@ -95,7 +95,6 @@ Default settings for VELOXDFS
     }
 
 <!-- @cond Remove those links for Doxygen-->
-Further information can be found it in: [Conf reference](https://github.com/DICL/VeloxDFS/wiki/Configuration-file-reference)
 <!-- @endcond -->
 
 FAQ
@@ -111,5 +110,3 @@ FAQ
   are inside `/usr/local/lib`.
 
 
-<!--links-->
-[eclipsed]: https://github.com/DICL/eclipsed
