@@ -16,8 +16,7 @@ VELOX ECOSYSTEM
 
 Related projects
 
-| Project                               | Description                  
-| -- | -- | -- |
+| Project           | Description                  
 | VeloxMR           |  experimental MapReduce engine based on VeloxDFS 
 | eclipsed          | deployment/debugging helper script writen in RUBY
 | velox-hadoop      | VeloxDFS JAVA library for Hadoop                 
