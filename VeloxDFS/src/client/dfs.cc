@@ -733,6 +733,7 @@ namespace velox {
 
 			cout << "IT : " << block_seq << " START: " << start << " END: " << end << " bs " << current_block_size << endl;
 			if (end >= file_info.size) {
+				block_seq++;
 				break;
 			}
 			start = end;
@@ -985,8 +986,6 @@ namespace velox {
 	// }}}
 	// download {{{
 	int DFS::download(std::string file_name) {
-		struct timespec start, end;
-		double read_time = 0.0;
 
 		//! Does the file exists
 		if (not this->exists(file_name)) {
@@ -1009,7 +1008,6 @@ namespace velox {
 		file.open(file_name, ios::binary);
 
 		for (uint32_t i = 0; i < fd->blocks.size(); i++) {
-			clock_gettime(CLOCK_REALTIME, &start);
 			IOoperation io_ops;
 			io_ops.operation = eclipse::messages::IOoperation::OpType::BLOCK_REQUEST;
 			io_ops.block.first = fd->primary_files[i];
@@ -1019,9 +1017,6 @@ namespace velox {
 			auto slave_socket = connect(GET_INDEX(fd->hash_keys[i]));
 			send_message(slave_socket.get(), &io_ops);
 			auto msg = read_reply<IOoperation>(slave_socket.get());
-
-			clock_gettime(CLOCK_REALTIME, &end);
-			read_time += (end.tv_sec - start.tv_sec) + (double)(end.tv_nsec - start.tv_nsec ) / 1000000000; 
 
 			file.write(msg->block.second.c_str(), msg->block.second.length());
 			slave_socket->close();
@@ -1043,17 +1038,19 @@ namespace velox {
 		std::string output;
 		int index = 0;
 
-		for (auto block_name : fd->blocks) {
+		for (uint32_t i = 0; i < fd->blocks.size(); i++) {
 			IOoperation io_ops;
 			io_ops.operation = eclipse::messages::IOoperation::OpType::BLOCK_REQUEST;
-			io_ops.block.first = fd->blocks[index];
+			io_ops.block.first = fd->primary_files[i];
+			io_ops.pos = fd->offsets[i];
+			io_ops.length = fd->block_size[i];
 
-			auto slave_socket = connect(GET_INDEX(fd->hash_keys[index]));
+			auto slave_socket = connect(GET_INDEX(fd->hash_keys[i]));
 			send_message(slave_socket.get(), &io_ops);
 			auto msg = read_reply<IOoperation>(slave_socket.get());
+
 			output += msg->block.second;
 			slave_socket->close();
-			index++;
 		}
 
 		return output;

@@ -33,7 +33,7 @@ OPTIONS
     -v           Version,    Print version
 
 
-Data Intensive Computing Lab at <SKKU/UNIST>, ROK. ver:)" + string(PACKAGE_VERSION) + " Builded at: " + string(__DATE__);
+ver:)" + string(PACKAGE_VERSION) + " Builded at: " + string(__DATE__);
 
 
 cli_driver::cli_driver() { 
